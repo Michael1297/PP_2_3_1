@@ -4,23 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import web.service.CarService;
-import web.service.CarServiceImp;
+import org.springframework.web.bind.annotation.RequestMapping;
+import web.service.UserService;
 
 @Controller
-public class CarController {
-    private final CarService cars;
+@RequestMapping()
+public class UserController {
+    private final UserService userService;
 
     @Autowired
-    public CarController(CarServiceImp cars) {
-        this.cars = cars;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/cars")
-    public String getCars(@RequestParam(name = "count", defaultValue = "" + Integer.MAX_VALUE) int count,
-                          Model model) {
-        model.addAttribute("carsList", cars.getCars(count));
-        return "cars";
+    @GetMapping("/")
+    public String getUsers(Model model) {
+        model.addAttribute("usersList", userService.listUsers());
+        return "users";
     }
 }
