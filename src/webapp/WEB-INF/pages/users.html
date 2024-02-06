@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +23,7 @@
             </tr>
         </thead>
         <tbody>
+            <!-- Вывод пользователей -->
             <tr th:each="user:${usersList}">
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.firstName}"></td>
@@ -32,6 +33,33 @@
                     <a th:href = "@{/edit/{id}(id=${user.id})}" class = "btn btn-primary">Update</a>
                     <a th:href = "@{/remove/{id}(id=${user.id})}" class = "btn btn-danger">Remove</a>
                 </td>
+            </tr>
+
+            <!-- Поле для добавления пользователя в таблицу -->
+            <tr>
+                <form th:action="@{/save/}" method="POST">
+                    <td></td>
+                    <td>
+                        <label>
+                            <input type="text" name="firstName" placeholder="Enter user first name">
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="text" name="lastName" placeholder="Enter user last name">
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="text" name="email" placeholder="Enter user email">
+                        </label>
+                    </td>
+                    <td>
+                        <button type="submit" class = "btn btn-primary">
+                            Add
+                        </button>
+                    </td>
+                </form>
             </tr>
         </tbody>
     </table>
