@@ -30,7 +30,7 @@
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.email}"></td>
                 <td>
-                    <a th:href = "@{/edit/{id}(id=${user.id})}" class = "btn btn-primary">Update</a>
+                    <a th:href = "@{/edit/user/{id}(id=${user.id})}" class = "btn btn-primary">Update</a>
                     <a th:href = "@{/remove/{id}(id=${user.id})}" class = "btn btn-danger">Remove</a>
                 </td>
             </tr>
