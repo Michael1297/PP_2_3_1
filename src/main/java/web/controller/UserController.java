@@ -38,13 +38,7 @@ public class UserController {
     @PostMapping("/edit/{id}")
     public String editUser(@PathVariable long id,
                            @ModelAttribute("user") User user) {
-
-        User existingUser = userService.getUser(id);
-        existingUser.setFirstName(user.getFirstName());
-        existingUser.setLastName(user.getLastName());
-        existingUser.setEmail(user.getEmail());
-
-        userService.updateUser(existingUser);
+        userService.updateUser(id, user);
         return "redirect:/";
     }
 
