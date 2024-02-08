@@ -21,9 +21,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(value = "web")
 public class DatabaseConfig {
+   private final Environment env;
 
    @Autowired
-   private Environment env;
+   public DatabaseConfig(Environment env) {
+      this.env = env;
+   }
 
    @Bean
    public DataSource getDataSource() {
